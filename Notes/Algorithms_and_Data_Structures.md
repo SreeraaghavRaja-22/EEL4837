@@ -303,3 +303,102 @@ for(i = 0; i < n -1; i++){
 ##### Variations of Bubble Sort
 
 - Alternate passes start -> end and end -> start
+
+#### Insertion Sort
+
+- keeps inserting a particular value until it is completely sorted
+- after `n-1` iterations, the array is sorted
+- time complexity is `O[n^2]`
+
+```cpp
+for(int i = 0; i < n; i++){
+  next_val = a[i];
+  // slide elements down to make room for Next value
+  int j = i; 
+  while(j > 0 && a[j-1] > next_val){
+    a[j] = a[j-1];
+  }
+}
+
+
+```
+
+## C++ Templates
+
+- there are templates for classes that are modifiable for different types (function overloading)
+
+```cpp
+
+template <typename T>
+class Array{
+  private: 
+    T* ptr
+    int size; 
+  public: 
+    Array(T arr[], int s);
+    void print();
+};
+
+template <typename T>
+Arraya<T>::Array(T arr[], int s){
+  ptr = new T[s];
+  size = s;
+  for(int i = 0; i < size; i++){
+    ptr[i] = arr[i];
+  }
+}
+
+template <typename T>
+void Array<T>::print() {
+  for(int i = 0; i < size; i++){
+    cout << " " << *(ptr + i);
+    cout<<endl;
+  }
+}
+
+// general call of template with type iint
+
+int main(){
+  int arr[5] = {1, 2, 3, 4, 5};
+  Array<int> a(arr, 5);
+  a.print();
+}
+
+```
+
+### Variation of Templates
+
+```cpp
+
+#include <iostream>
+using namespace std; 
+
+template <class T, class U>
+// template <class T, class U = char>
+class A{
+  T x;
+  U y; 
+  public: 
+    A(){
+      cout << "constructor called" <<endl;
+    }
+};
+
+int main(){
+  A<char, char> a; 
+  A<int, double> b; // can't call this without having the two parameters in template
+  // A<char> c;
+  return 0;
+}
+
+```
+
+## Relatives of Big-O
+
+### Big-Omega
+
+- what the heck
+
+### Big-Theta
+
+- what the heck
