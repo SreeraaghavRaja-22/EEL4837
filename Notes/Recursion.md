@@ -90,4 +90,22 @@ void reverse(int arr[], int start, int end){
 - Insertion sort but recursively
 - Recursive problem to search for an element x in an unsorted array A
 - Recursively find the number of occurrences of an element e in array A
-- Solve the Towers of Hanoi problem
+- Solve the Tower of Hanoi problem
+
+### Tower of Hanoi Recursive Solution Pseudocode
+
+```md
+Hanoi (n, i, j, k)
+
+if(n == 1)
+{
+  cout << Move l is k <= n <= from <= i << to << j << endl; 
+}
+
+Hanoi(n-1, i, k, j);
+Move(n, i, j);
+```
+
+#### Time Complexity
+
+- O(2^n)

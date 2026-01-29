@@ -319,9 +319,25 @@ for(int i = 0; i < n; i++){
     a[j] = a[j-1];
   }
 }
-
-
 ```
+
+#### Divide and Conquer Sorting
+
+##### Background of D and C Sorting
+
+- divide problem into smaller parts and solve those parts, then combine all the solutions together
+
+##### Mergesort
+
+- take two arrays and recursively sort both of these arrays and then combine them
+- Procedure
+  - if n = 1: terminate (every one-element list is already sorted)
+  - if n > 1: divide the array into two halves, recursively sort each half, and merge sorted halves
+- Can apparently declare the size of an array at compile time for some C++ compilers
+
+### Quicksort
+
+- partition array into smaller and larger parts
 
 ## C++ Templates
 
