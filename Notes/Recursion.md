@@ -109,3 +109,26 @@ Move(n, i, j);
 #### Time Complexity
 
 - O(2^n)
+
+## Recursion Practice
+
+1. Write a recursive procedure to insert an element x into a sorted array A[0..i] such that the resulting array is A[0..i+1] and is sorted. Then write the recursive insertion sort.
+   1. [1, 3, 4, 5] insert 5
+   2. Compare
+      1. 1 < 5 <--- Base case
+      2. 3 < 5
+      3. 4 < 5
+      4. 7 < 5 <--- End case
+   3. [1, 3, 4, 5, 5]
+
+```cpp
+insertion(A, i, x)
+
+  if ( i < 0 || A[i] == x){
+    A[i + x] = x;
+    return;
+  }
+
+  A[i+1] = A[i];
+  insertion(A, i-1, x);
+```
