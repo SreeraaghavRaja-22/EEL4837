@@ -335,9 +335,83 @@ for(int i = 0; i < n; i++){
   - if n > 1: divide the array into two halves, recursively sort each half, and merge sorted halves
 - Can apparently declare the size of an array at compile time for some C++ compilers
 
-### Quicksort
+```cpp
+void mergeSort(int A[], int l, int r){
+    if(l < r){
+      // m is the point where the array is divided into two subarrays
+      int m = l + (r - 1) / 2; 
+      mergeSort(A, l, m);
+      mergeSort(A, m + 1, r);
+      // Merge the sorted subarrays
+      merge(A, l, m, r)
+    }
+}
+```
+
+- Time complexity is n*log(n);
+- Space complexity is something
+
+#### Quicksort
 
 - partition array into smaller and larger parts
+- Given an array of n comparable elements (e.g., integers)
+  - If array only contains one element, return
+  - Else,
+    - Pick one element to use as pivot
+    - Partition element into two sub-arrays
+      - elements less than or equal pivot
+      - elements greater than or equal to pivot
+    - Quicksort two arrays
+
+```cpp
+  void quickSort(int arr[], int start, int end){
+    // base case
+    if (start >= end)
+      return;
+
+    // Partitioning the array, returns  the pivot index
+    int p = partition(arr, start, end);
+
+    // sort left part
+    quickSort(arr, start, p-1);
+
+    // sort right part
+    quickSort(arr, p + 1, end);
+  }
+```
+
+- **Paritioning**: always assume that the left-most element is the pivot
+
+```cpp
+  int partition(int arr[], int start, int last){
+    int i = start + 1, j = last, temp;
+
+    // WE use arr[start] as the pivot element 
+    while(i <= j){
+      if(arr[i] <= arr[start]) i++;
+      if(arr[j] > arr[start]) j--;
+      if(i <= j){
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+
+    // Swap the arr[start] and arr[j]
+    temp = arr[start];
+    arr[start] = arr[j];
+    arr[j] = temp;
+
+    return j;
+  }
+```
+
+- Partitioning Time-Complexity: O(n)
+
+##### Sorting in "Linear" Time: Binsort and Radix Sort
+
+- Binsort/counting Sort: for keys from a fixed small domain
+- Radix Sort: binsort on each digit, bottom up, use the radix of the number system
 
 ## C++ Templates
 
@@ -418,3 +492,10 @@ int main(){
 ### Big-Theta
 
 - what the heck
+
+## Sorting Stability
+
+- when a sorting algorithm preserves the relative order of "equal" items
+- useful when sequentially sorting by different keys
+- Stable Sorting Algorithms
+  - fill out later
