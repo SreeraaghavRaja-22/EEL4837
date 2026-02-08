@@ -6,11 +6,16 @@ void Swap(int &x, int &y);
 
 int deduplicate(int nums[], int n);
 
+void PrintArray(int a[], int n);
+
+
 
 int main(void){
-    int a[] = {9, 12, 2, 1, 4, 20, 50, 30, 8, 7, 7, 199};
+    int a[] = {9, 12, 2, 1, 4, 20, 20, 20, 8, 7, 7, 199};
     int n = sizeof(a) / sizeof(a[0]);
     BubbleSortOpt(n, a);
+    int size = deduplicate(a, n);
+    PrintArray(a, size);
     return 0;
 }
 
@@ -18,6 +23,13 @@ void Swap(int &x, int &y){
     int tmp = x; 
     x = y; 
     y = tmp; 
+}
+
+void PrintArray(int a[], int n){
+    for(int i = 0; i < n; i++){
+        std::cout << a[i] << " ";
+    }
+    std::cout << std::endl; 
 }
 
 void BubbleSortOpt(int n, int a[]){
@@ -58,6 +70,7 @@ int deduplicate(int nums[], int n){
     // initial value = first value of array
     int initial_value = nums[0];
     int num_duplicates;
+    int arr_size = n; 
     
     // loop through array and check num of duplicate values
     for(int i = 0; i < n; i++){
@@ -65,7 +78,7 @@ int deduplicate(int nums[], int n){
         initial_value = nums[i];
         num_duplicates = 0;
 
-        for(int j = i; j < sizeof(nums) / sizeof(nums[0]); j++){
+        for(int j = i; j < arr_size; j++){
             if(initial_value == nums[j]){
                 num_duplicates++;
             }
@@ -73,9 +86,13 @@ int deduplicate(int nums[], int n){
 
         // if there are duplicates, shift the array down
         if(num_duplicates > 0){
-            for(int j = i + num_duplicates; j < sizeof(nums) / sizeof(nums[0]); j++){
-                nums[j - num_duplicates] =
+            for(int j = i + num_duplicates; j < arr_size; j++){
+                nums[j - num_duplicates - 1] = nums[j];
             }
+
+            arr_size = n - num_duplicates - 1;
         }
     }
+
+    return arr_size;
 }
