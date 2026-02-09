@@ -7,12 +7,12 @@ void Swap(int &x, int &y);
 void PrintArray(int a[], int n);
 
 
-int main(void){
-    int a[] = {9, 12, 2, 1, 4, 20, 50, 30, 8, 7, 7, 199};
-    int n = sizeof(a) / sizeof(a[0]);
-    BubbleSortOpt(n, a);
-    return 0;
-}
+// int main(void){
+//     int a[] = {3, 2, 1};
+//     int n = sizeof(a) / sizeof(a[0]);
+//     BubbleSortOpt(n, a);
+//     return 0;
+// }
 
 void Swap(int &x, int &y){
     int tmp = x; 
@@ -23,14 +23,18 @@ void Swap(int &x, int &y){
 void PrintArray(int a[], int n){
     for(int i = 0; i < n; i++){
         std::cout << a[i] << " ";
+        if(i == n-1){
+            std::cout << std::endl;
+        }
     }
-    std::cout << std::endl; 
 }
 
 void BubbleSortOpt(int n, int a[]){
     bool dir_flag = 0; 
     int num_swaps; 
-
+    if(n <= 1){
+        return;
+    }
     for(int i = 0; i < n; i++){
         num_swaps = 0; 
         if(dir_flag){
