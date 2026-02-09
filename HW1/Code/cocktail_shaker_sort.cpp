@@ -8,7 +8,7 @@ void PrintArray(int a[], int n);
 
 
 // int main(void){
-//     int a[] = {3, 2, 1};
+//     int a[] = {};
 //     int n = sizeof(a) / sizeof(a[0]);
 //     BubbleSortOpt(n, a);
 //     return 0;
@@ -22,9 +22,11 @@ void Swap(int &x, int &y){
 
 void PrintArray(int a[], int n){
     for(int i = 0; i < n; i++){
-        std::cout << a[i] << " ";
         if(i == n-1){
-            std::cout << std::endl;
+            std::cout << a[n-1] << std::endl;
+        }
+        else{
+            std::cout << a[i] << " ";
         }
     }
 }
@@ -33,8 +35,13 @@ void BubbleSortOpt(int n, int a[]){
     bool dir_flag = 0; 
     int num_swaps; 
     if(n <= 1){
+        if(n == 1)
+            PrintArray(a, n);
+        else    
+            std::cout << std::endl;
         return;
     }
+
     for(int i = 0; i < n; i++){
         num_swaps = 0; 
         if(dir_flag){
