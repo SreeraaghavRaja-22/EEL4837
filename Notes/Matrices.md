@@ -18,5 +18,28 @@
 
 ### Sparse Matrix Algorithms
 
-1. Given a matrix A, write a program to compute the transpose of A.
-2. Given two m x n matrices A and B, write a program to comput the sum C = A + B;
+1. Compute the transpose of A
+2. Compute sum C = A + B
+3. Compute C = A x B
+4. Compute the determinant of A
+5. Compute inverse of `A^-1`
+
+### Solving Linear Equations with Matrices
+
+- **A x b = Y**
+  - `A: Equation Matrix`
+  - `b: Variable Vector`
+  - `Y: Output Vector`
+- **Methodology**
+  - *Gaussian Elimination*
+  - Turn a **linear equation** into an **augmented matrix** and it should work.
+  - Get everything to **Reduced Row Echelon Form (RREF)**
+    - *Back Substitution*: scale the row by a fraction to make the pivot 1
+- **Three Rules for Gaussian Elimination**
+  - Transposing equations doesn't change their solution (switching rows doesn't change the solution)
+  - Scaling an equation doesn't change the solution (scaling any row of an augmented matrix doesn't change the solution)
+  - If a set of numbers satisfies two equation, then it also satisfies the equation which is one plus a scalar multiple of the other
+
+---
+
+- **Example: Back Substitution Implementation**
