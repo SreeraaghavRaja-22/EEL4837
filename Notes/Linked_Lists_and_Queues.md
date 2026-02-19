@@ -67,3 +67,33 @@
     - when we enqueue, we push onto the first stack
     - when we dequeue, we pop from the second stack
     - if the second stack is empty, we pop from the first stack and push onto the second stack
+
+- **Application of Queues**
+  - Breadth-First Search (BFS)
+  - Hold jobs for printer
+  - Store packets on network routers
+  - Hold memory "freelists"
+  - Make waitlists fair (FIFO)
+
+### How to Implement a Queue
+
+- **Using an Array**
+  - Issue: head an tail pointers will not line up at times
+  - Solution: **Circular Array**
+    - use an array of size N in a circular fashion
+    - use mod to wrap around
+    - Two variables keep track of the front and rear of the queue
+      - front (f): index of the front element
+      - rear (r): index immediately after the last element
+      - array location r is kept empty
+    - When is the array empty?
+      - when f == r
+    - When is the array full?
+      - when (r + 1) % N == f
+    - How do we calculate array size?
+      - (N - f + r) % N
+
+### Variants of a Stack and Queue
+
+- **Dequeue (Double-Ended) Queue** is a data structure that allows insertiona and deletion of items at **both ends**
+- **Priority Queue** supports the removeal of elements in **priority order**
