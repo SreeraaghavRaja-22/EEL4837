@@ -12,6 +12,7 @@ struct Node{
 
 void DeleteNode(Node* head, Node* target);
 void PrintNodes(Node* head);
+double AverageDeleter(Node* head);
 
 
 #endif /*P2_DEF_H*/
