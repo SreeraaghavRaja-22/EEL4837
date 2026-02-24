@@ -15,5 +15,4 @@ int totalCpuTime(Job* ready, Job* blocked);
 int countJobs(Job* ready, Job* blocked);
 Job* findJob(Job* ready, bool temp_w);
 
-
 #endif /*P3_H*/
