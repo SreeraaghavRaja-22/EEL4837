@@ -13,6 +13,7 @@ Job* blockFrontJob(Job* ready, Job*& blocked);
 Job* tick(Job* ready, Job*& blocked);
 int totalCpuTime(Job* ready, Job* blocked);
 int countJobs(Job* ready, Job* blocked);
-Job* findJob(Job* ready, bool temp_w);
+Job* findJob(Job* head);
+Job* findTail(Job* head);
 
 #endif /*P3_H*/
