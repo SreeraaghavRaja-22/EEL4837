@@ -43,8 +43,8 @@ int main(void){
 
 
     PrintNodes(*a);
-    double bruh = AverageDeleter(*a);
-    std::cout << bruh << std::endl; 
+    double average = AverageDeleter(*a);
+    std::cout << average << std::endl; 
 
     PrintNodes(*a);
     return 0; 
@@ -53,9 +53,12 @@ int main(void){
 void DeleteNode(Node* head, Node* target){
     // set a temporary pointer of node type to head; 
     Node* temp;
+    Node* prev_temp;
     temp = head; 
+    prev_temp = head; 
     do{
-        // traverse the linked list
+        // traverse the linked list to make sure it exists
+        prev_temp = temp; 
         temp = temp -> next; 
         if(temp -> next == nullptr){
             break; 
@@ -64,11 +67,13 @@ void DeleteNode(Node* head, Node* target){
 
     // initialize prev and next nodes from target
     Node* next = target -> next; 
-    Node* prev = (target-1);
+    Node* prev = prev_temp;
+    // printf("Target-1 -> val = %d\n", prev->val);
 
     // target-1 -> next points to target -> next;
     // removes target node
     prev -> next = next; 
+    // printf("Prev -> Next: %d, Prev -> Val: %d\n", prev->next->val, prev->val);
     return; 
 }
 
@@ -80,7 +85,6 @@ void PrintNodes(Node* head){
             std::cout << temp->val << std::endl;
         else
             std::cout << temp->val << ",";
-
         temp = temp -> next; 
     }while(temp != nullptr);
     
@@ -91,23 +95,34 @@ double AverageDeleter(Node* head){
     
     int num_vals = 1; 
     double avg = head -> val; 
+    int sum = head -> val; 
 
     Node* temp = head; 
+   
     temp = temp -> next; 
 
     while(temp != nullptr){
+        //printf("Temp->val: %d\n", temp->val);
         if(temp->val < avg){
-            printf("Deleted a node with value = %d\n", temp->val);
-            PrintNodes(head);
+            Node* to_del; 
+            to_del = temp;
+            //printf("Deleted a node with value = %d\n", temp->val);
+            //PrintNodes(head);
             DeleteNode(head, temp);
+            //printf("%d\n", temp->val);
+            temp = temp -> next;
+            delete to_del;
+            //printf("to_del = %d\n", to_del->val);
         }
         else{
             num_vals++;
-            avg = (double)((avg + temp->val) / num_vals);
-            printf("Calculating new value = %f\n", avg);
+            //printf("Num_vals: %i\n", num_vals);
+            sum += temp -> val; 
+            avg = ((double)sum / num_vals);
+            //printf("Calculating new value = %f\n", avg);
+            temp = temp -> next;
         }
-
-        temp = temp -> next; 
+         
     }
     return avg;
 }

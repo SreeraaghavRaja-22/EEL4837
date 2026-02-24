@@ -78,3 +78,30 @@
 ### Tree Traversal
 
 - To **traverse** the tree means to visit each node in a binary tree **exactly once**
+
+### Binary Search Tree
+
+- **Binary Search Trees (BST):** a binary tree where each node R has the following properties
+  - Every element of R's left subtree contains data less than R
+  - Every element of R's right subtree contains data greater than R
+- BSTs store their elements in **sorted order** (good for searching / storing tasks)
+
+#### Searching a Binary Tree
+
+- Describe an algorithm for **searching** a binary search tree.
+  - Try searching for the value of 31
+  - Then searching for 6
+- What is the **maximum number of nodes** you would visit to perform any search?
+  - The height of the tree
+- What is the general algorithm?
+
+- What is the time complexity?
+  - log(n) (bushy tree)
+  - n (skinny tree)
+
+#### Deletion Algorithm
+
+- if a leaf, just delete it
+- if it has one child, move the child to the node
+- if two children, then
+  - set the value to be in-order successor; then delete the in-order sucessor node (recursively)
