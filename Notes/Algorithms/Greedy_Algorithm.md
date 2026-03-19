@@ -22,3 +22,4 @@
 - You have to run nine jobs, with running times of 3, 5, 6, 10, 11, 14, 15, 18, and 20 minutes
 - You have three processors on which you can run these jobs
 - Optimal solutions require a brute force approach since processors need to try all possible combinations of jobs
+- The issue with the above approach is that it will take **exponential time**
