@@ -1,0 +1,6 @@
+Total valid words: 6
+Distinct words: 3
+Words in order of first appearance:
+hash 3
+table 2
+fileio 1
